@@ -36,18 +36,27 @@ function checkCollision(rock) {
     // FIXME: The rock is 20 pixel's wide -- how do we get the right edge?
     const rockRightEdge = positionToInteger(rock.style.left + 20);
 
-    if (false /**
-               * Think about it -- what's happening here?
-               * There's been a collision if one of three things is true:
-               * 1. The rock's left edge is < the DODGER's left edge,
-               *    and the rock's right edge is > the DODGER's left edge;
-               * 2. The rock's left edge is > the DODGER's left edge,
-               *    and the rock's right edge is < the DODGER's right edge;
-               * 3. The rock's left edge is < the DODGER's right edge,
-               *    and the rock's right edge is > the DODGER's right edge
-               */) {
+    if (rockLeftEdge < dodgerLeftEdge && rockRightEdge > dodgerLeftEdge) {
       return true
+    } else if (rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge) {
+      return true
+    } else if (rockLeftEdge < dodgerRightEdge && rockRightEdge > dodgerRightEdge) {
+      return true
+    } else {
+      return false
     }
+    // if (false /**
+    //            * Think about it -- what's happening here?
+    //            * There's been a collision if one of three things is true:
+    //            * 1. The rock's left edge is < the DODGER's left edge,
+    //            *    and the rock's right edge is > the DODGER's left edge;
+    //            * 2. The rock's left edge is > the DODGER's left edge,
+    //            *    and the rock's right edge is < the DODGER's right edge;
+    //            * 3. The rock's left edge is < the DODGER's right edge,
+    //            *    and the rock's right edge is > the DODGER's right edge
+    //            */) {
+    //   return true
+    // }
   }
 }
 
@@ -86,15 +95,15 @@ function createRock(x) {
      * Otherwise, if the rock hasn't reached the bottom of
      * the GAME, we want to move it again.
      */
-     if (top > 0) {
+     if (top < 380) {
        moveRock()
      }
     /**
      * But if the rock *has* reached the bottom of the GAME,
      * we should remove the rock from the DOM
      */
-     if (top <= 0) {
-       GAME.removeChild('rock')
+     if (top >= 380) {
+       GAME.removeChild(rock)
      }
     }
 
@@ -102,11 +111,13 @@ function createRock(x) {
     function step() {
       top = `${top += 2}px`
 
-      if (top < 360) {
+      if (top =< 380) {
         window.requestAnimationFrame(step)
       }
     }
     window.requestAnimationFrame(step)
+
+    // const stepInterval = setInterval(step, 1000)
   // Add the rock to ROCKS so that we can remove all rocks
   // when there's a collision
   ROCKS.push(rock)
