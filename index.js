@@ -139,23 +139,10 @@ function moveDodgerLeft() {
    * This function should move DODGER to the left
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
-
-   document.addEventListener('keydown', function(e) {
-     if (e.which === 37) {
-       var leftNumbers = dodger.style.left.replace('px', '')
-       var left = parseInt(leftNumbers, 10)
-
-       dodger.style.left = `${left - 1}px`
-     }
-   })
-
-   function step() {
     var leftNumbers = DODGER.style.left.replace('px', '')
     var left = parseInt(leftNumbers, 10)
     DODGER.style.left = `${left - 4}px`
-    window.requestAnimationFrame(step)
-   }
-  window.requestAnimationFrame(step)
+    window.requestAnimationFrame(moveDodgerLeft)
 }
 
 function moveDodgerRight() {
@@ -164,11 +151,10 @@ function moveDodgerRight() {
    * This function should move DODGER to the right
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
-   function step() {
+   var rightNumbers = DODGER.style.right.replace('px', '')
+   var right = parseInt(rightNumbers, 10)
     DODGER.style.right = `${right += 4}px`
-    window.requestAnimationFrame(step)
-   }
-
+    window.requestAnimationFrame(moveDodgerRight)
 }
 
 /**
