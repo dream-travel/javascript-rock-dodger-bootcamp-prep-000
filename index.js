@@ -75,7 +75,7 @@ function createRock(x) {
    * Now that we have a rock, we'll need to append
    * it to GAME and move it downwards.
    */
-   GAME.appendChild('rock')
+   GAME.appendChild(rock)
 
   /**
    * This function moves the rock. (2 pixels at a time
@@ -95,14 +95,14 @@ function createRock(x) {
      * Otherwise, if the rock hasn't reached the bottom of
      * the GAME, we want to move it again.
      */
-     if (top < 380) {
+     if (top <= 400) {
        moveRock()
      }
     /**
      * But if the rock *has* reached the bottom of the GAME,
      * we should remove the rock from the DOM
      */
-     if (top >= 380) {
+     if (top >= 400) {
        GAME.removeChild(rock)
      }
     }
@@ -111,13 +111,14 @@ function createRock(x) {
     function step() {
       top = `${top += 2}px`
 
-      if (top <= 380) {
+      if (top <= 400) {
         window.requestAnimationFrame(step)
       }
     }
-    window.requestAnimationFrame(step)
 
-    // const stepInterval = setInterval(step, 1000)
+
+    const stepInterval = setInterval(step, 1000)
+    window.requestAnimationFrame(step)
   // Add the rock to ROCKS so that we can remove all rocks
   // when there's a collision
   ROCKS.push(rock)
@@ -138,6 +139,7 @@ function endGame() {
   while (0 < ROCKS.length) {
     ROCKS.pop()
   }
+  // ROCKS = []
   alert("YOU LOSE!")
 }
 
