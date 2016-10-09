@@ -37,13 +37,13 @@ function checkCollision(rock) {
     const rockRightEdge = positionToInteger(rock.style.left + 20);
 
     if (rockLeftEdge < dodgerLeftEdge && rockRightEdge > dodgerLeftEdge) {
-      return true
-    } else if (rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge) {
-      return true
-    } else if (rockLeftEdge < dodgerRightEdge && rockRightEdge > dodgerRightEdge) {
-      return true
-    } else {
       return false
+    } else if (rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge) {
+      return false
+    } else if (rockLeftEdge < dodgerRightEdge && rockRightEdge > dodgerRightEdge) {
+      return false
+    } else {
+      return true
     }
     // if (false /**
     //            * Think about it -- what's happening here?
@@ -88,7 +88,7 @@ function createRock(x) {
      * If a rock collides with the DODGER,
      * we should call endGame()
      */
-     if (checkCollision(rock) === true) {
+     if (checkCollision(rock) === false) {
        endGame()
      }
     /**
@@ -111,7 +111,7 @@ function createRock(x) {
     function step() {
       top = `${top += 2}px`
 
-      if (top =< 380) {
+      if (top <= 380) {
         window.requestAnimationFrame(step)
       }
     }
