@@ -95,9 +95,10 @@ function createRock(x) {
      * Otherwise, if the rock hasn't reached the bottom of
      * the GAME, we want to move it again.
      */
-     if (top <= 400) {
-       moveRock()
-     }
+    //  if (top < 400) {
+      // moveRock()
+      step()
+    //  }
     /**
      * But if the rock *has* reached the bottom of the GAME,
      * we should remove the rock from the DOM
@@ -111,13 +112,13 @@ function createRock(x) {
     function step() {
       top = `${top += 2}px`
 
-      if (top <= 400) {
+      if (top < 400) {
         window.requestAnimationFrame(step)
       }
     }
 
 
-    const stepInterval = setInterval(step, 1000)
+    const stepInterval = setInterval(step, 100)
     window.requestAnimationFrame(step)
   // Add the rock to ROCKS so that we can remove all rocks
   // when there's a collision
