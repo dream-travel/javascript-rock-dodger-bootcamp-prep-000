@@ -41,7 +41,7 @@ function checkCollision(rock) {
     } else if (rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge) {
       return true
     } else if (rockLeftEdge < dodgerRightEdge && rockRightEdge > dodgerRightEdge) {
-      return truelearn 
+      return true
     } else {
       return false
     }
@@ -123,8 +123,8 @@ function createRock(x) {
     }
 
 
-    const stepInterval = setInterval(step, 500);
-    window.requestAnimationFrame(step)
+    const stepInterval = setInterval(step, 700);
+    // window.requestAnimationFrame(step)
   // Add the rock to ROCKS so that we can remove all rocks
   // when there's a collision
   ROCKS.push(rock)
