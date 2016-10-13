@@ -49,17 +49,17 @@ function checkCollision(rock) {
   const rockRightEdge = positionToInteger(rock.style.left) + 20;
 
   // if (top > 360) {
-  //     if (positionToInteger(rock.style.left) <= positionToInteger(DODGER.style.left) && positionToInteger(rock.style.left) + 20 >= positionToInteger(DODGER.style.left)) {
+  //     if (positionToInteger(rock.style.left) < positionToInteger(DODGER.style.left) && positionToInteger(rock.style.left) + 20 > positionToInteger(DODGER.style.left)) {
   //       console.log('collision dodger left side');
   //       console.log(`Rock: ${positionToInteger(rock.style.left)}-${positionToInteger(rock.style.left) + 20}, Dodger: ${positionToInteger(DODGER.style.left)}-${positionToInteger(DODGER.style.left) + 40}`);
   //       return true;
   //
-  //     } else if (positionToInteger(rock.style.left) >= positionToInteger(DODGER.style.left) && positionToInteger(rock.style.left) + 20 <= positionToInteger(DODGER.style.left) + 40) {
+  //     } else if (positionToInteger(rock.style.left) > positionToInteger(DODGER.style.left) && positionToInteger(rock.style.left) + 20 < positionToInteger(DODGER.style.left) + 40) {
   //       console.log('collision mid dodger');
   //       console.log(`Rock: ${positionToInteger(rock.style.left)}-${positionToInteger(rock.style.left) + 20}, Dodger: ${positionToInteger(DODGER.style.left)}-${positionToInteger(DODGER.style.left) + 40}`);
   //       return true;
   //
-  //     } else if (positionToInteger(rock.style.left) <= positionToInteger(DODGER.style.left) + 40 && positionToInteger(rock.style.left) + 20 >= positionToInteger(DODGER.style.left) + 40) {
+  //     } else if (positionToInteger(rock.style.left) < positionToInteger(DODGER.style.left) + 40 && positionToInteger(rock.style.left) + 20 > positionToInteger(DODGER.style.left) + 40) {
   //       console.log('collision dodger right side');
   //       console.log(`Rock: ${positionToInteger(rock.style.left)}-${positionToInteger(rock.style.left) + 20}, Dodger: ${positionToInteger(DODGER.style.left)}-${positionToInteger(DODGER.style.left) + 40}`);
   //       return true;
@@ -77,7 +77,7 @@ function checkCollision(rock) {
         console.log(`Rock: ${positionToInteger(rock.style.left)}-${positionToInteger(rock.style.left) + 20}, Dodger: ${positionToInteger(DODGER.style.left)}-${positionToInteger(DODGER.style.left) + 40}`);
         return true;
 
-      } else if (rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge) {
+      } else if (rockLeftEdge >= dodgerLeftEdge && rockRightEdge <= dodgerRightEdge) {
         console.log('collision mid dodger');
         console.log(`Rock: ${positionToInteger(rock.style.left)}-${positionToInteger(rock.style.left) + 20}, Dodger: ${positionToInteger(DODGER.style.left)}-${positionToInteger(DODGER.style.left) + 40}`);
         return true;
