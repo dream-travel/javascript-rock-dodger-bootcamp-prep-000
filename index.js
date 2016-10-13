@@ -72,18 +72,18 @@ function checkCollision(rock) {
 
 
   if (top > 360) {
-      if (rockLeftEdge <= dodgerLeftEdge && rockRightEdge >= dodgerLeftEdge) {
-        console.log('collision dodger left side');
+      if (rockLeftEdge < dodgerLeftEdge && rockRightEdge > dodgerLeftEdge) {
+        console.log('collision on left side of dodger');
         console.log(`Rock: ${positionToInteger(rock.style.left)}-${positionToInteger(rock.style.left) + 20}, Dodger: ${positionToInteger(DODGER.style.left)}-${positionToInteger(DODGER.style.left) + 40}`);
         return true;
 
-      } else if (rockLeftEdge >= dodgerLeftEdge && rockRightEdge <= dodgerRightEdge) {
+      } else if (rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge) {
         console.log('collision mid dodger');
         console.log(`Rock: ${positionToInteger(rock.style.left)}-${positionToInteger(rock.style.left) + 20}, Dodger: ${positionToInteger(DODGER.style.left)}-${positionToInteger(DODGER.style.left) + 40}`);
         return true;
 
-      } else if (rockLeftEdge <= dodgerRightEdge && rockRightEdge >= dodgerRightEdge) {
-        console.log('collision dodger right side');
+      } else if (rockLeftEdge < dodgerRightEdge && rockRightEdge > dodgerRightEdge) {
+        console.log('collision on right side of dodger');
         console.log(`Rock: ${positionToInteger(rock.style.left)}-${positionToInteger(rock.style.left) + 20}, Dodger: ${positionToInteger(DODGER.style.left)}-${positionToInteger(DODGER.style.left) + 40}`);
         return true;
 
@@ -137,7 +137,7 @@ function createRock(x) {
      * If a rock collides with the DODGER,
      * we should call endGame()
      */
-     if (checkCollision(rock) === false) {
+     if (checkCollision(rock) === true) {
        endGame();
      }
     //  } else {
